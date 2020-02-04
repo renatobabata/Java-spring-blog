@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <title> My Blog </title>
     <!--CSS-->
@@ -22,9 +23,24 @@
                 </ol>
             </nav>
 
-            <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;">
+            <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="post : ${posts}">
+                <!-- th is used for thymeleaf to implement a 'loop' function, it receives 'posts' from  attributeName in controller class  -->
                 <div class="card-body">
-                    Teste
+                    <p class="card-subtitle mb-2 text-muted" style="font-size:0.8rem;">
+                        <span th:text="${post.autor}"></span>
+                        <span th:text="${post.data}"></span>
+
+                    </p>
+
+                    <a href="#">
+                        <h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
+                            <span th:text="${post.titulo}"></span>
+                        </h4>
+                    </a>
+
+                    <p class="card-text">
+                        <span th:utext="${#strings.abbreviate(post.texto,400)}"></span> <!-- To show only 400 characters -->
+                    </p>
                 </div>
             </div>
 
