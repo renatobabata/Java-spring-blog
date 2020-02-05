@@ -8,7 +8,7 @@ public interface BlogService {
 
     List<Post> findAll(); // It will list all posts
 
-    Post findBYId(long id); // It will show a post with specify ID
+    Post findById(long id); // It will show a post with specify ID
 
     Post save(Post post); // It will send a post to save in DB
 }
